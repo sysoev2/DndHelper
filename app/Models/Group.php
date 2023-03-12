@@ -10,6 +10,8 @@ class Group extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'description', 'creator_id'];
+
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'group_members');
