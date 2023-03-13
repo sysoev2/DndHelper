@@ -23,6 +23,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::name('group.')->controller(GroupController::class)->prefix('/groups')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/', 'store')->name('store');
+        Route::post('/{group}', 'update')->name('update');
+        Route::get('/{group}', 'showGroup')->name('showGroup');
     });
 });
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');

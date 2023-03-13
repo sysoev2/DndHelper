@@ -32,4 +32,17 @@ class GroupController extends Controller
 
         return Redirect::route('group.index');
     }
+
+    public function update(Group $group, GroupRequest $request)
+    {
+        if($group->creator_id === auth()->id()) {
+            $this->groupService->update($group, GroupDTOFactory::fromRequest($request));
+        }
+        return Redirect::route('group.showGroup', ['group' => $group]);
+    }
+
+    public function showGroup(Group $group, Request $request)
+    {
+        return view('groups.showGroup',['group' => $group]);
+    }
 }
