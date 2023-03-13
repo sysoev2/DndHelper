@@ -22,7 +22,7 @@ class GroupService
 
     public function update(Group $group, GroupDTO $groupDTO): Group
     {
-        $group::update([
+        $group->update([
             'name' => $groupDTO->name,
             'description' => $groupDTO->description,
             'creator_id' => $groupDTO->creator_id,
